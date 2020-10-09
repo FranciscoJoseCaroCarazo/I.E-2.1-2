@@ -167,6 +167,11 @@ public class Main {
 
 	}
 
+	/**
+	 * Método que nos permite Borrar la venta que queramos
+	 * @param numeventa
+	 * @return
+	 */
 	private static boolean borrarVenta(int numeventa) {
 
 		System.out.println("---------------------------- ");
@@ -199,6 +204,7 @@ public class Main {
 				}
 			}
 
+			//Si existe = 1 entonces se cargan los datos en el archivo
 			if (existe == 1) {
 				
 				Marshaller m = jaxbContext.createMarshaller();
@@ -222,6 +228,14 @@ public class Main {
 
 	}
 	
+	/**
+	 * Metodo que nos permite modificar las unidades vendidas y
+	 * la fecha de la compra.
+	 * @param numeventa
+	 * @param Newunidades
+	 * @param Newfecha
+	 * @return
+	 */
 	private static boolean modVenta(int numeventa, int Newunidades, String Newfecha) {
 
 		System.out.println("---------------------------- ");
@@ -255,6 +269,7 @@ public class Main {
 				}
 			}
 
+			//Si existe = 1 entonces se cargan los datos en el archivo
 			if (existe == 1) {
 				
 				Marshaller m = jaxbContext.createMarshaller();
@@ -278,6 +293,11 @@ public class Main {
 
 	}
 	
+	/**
+	 * Metodo que nos permite modificar el Stock del producto a vender
+	 * @param Stock
+	 * @return
+	 */
 	private static boolean modStock(int Stock) {
 
 		System.out.println("--------------------------- ");
@@ -290,12 +310,13 @@ public class Main {
 			JAXBElement jaxbElement = (JAXBElement) u.unmarshal(new FileInputStream("./ventasarticulos.xml"));
 
 			VentasType miventa = (VentasType) jaxbElement.getValue();
+
 			Ventas vent = miventa.getVentas();
-			DatosArtic datos = (DatosArtic) jaxbElement.getValue();
+			DatosArtic miartic = (DatosArtic) miventa.getArticulo();
 			
 			BigInteger sumarStock = BigInteger.valueOf(Stock);
-			BigInteger nuevoStock=datos.getStock().add(sumarStock);
-			datos.setStock(nuevoStock);
+			BigInteger nuevoStock=miartic.getStock().add(sumarStock);
+			miartic.setStock(nuevoStock);
 			
 			Marshaller m = jaxbContext.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

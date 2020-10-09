@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"generated","l":"DatosArtic"},{"p":"main","l":"Main"},{"p":"generated","l":"ObjectFactory"},{"p":"generated","l":"Ventas.Venta"},{"p":"generated","l":"Ventas"},{"p":"generated","l":"VentasType"}]
